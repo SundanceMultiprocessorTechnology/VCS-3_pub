@@ -1,0 +1,4 @@
+######### VCS-3 change log ##############
+1.0 initial board support with minimal setup for zynq_ultra_ps (Vivado 2023.2)
+1.1 added interfaces for cameras including pin allocation
+

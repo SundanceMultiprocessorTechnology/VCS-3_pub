@@ -1,0 +1,10 @@
+# Documentation
+
+This folder hosts the relevant information for start working with the VCS-3 system.
+
+## Documents
+1. [User Manual](https://github.com/SundanceMultiprocessorTechnology/VCS-3_pub/raw/2024.2/Documents/VCS-3%20Design%20Specification%20(QCF51).pdf)
+2. [VCS3 Application Starter's Guide v1.1]
+3. [VCS3 Development Kit - Getting Started Guide]
+
+

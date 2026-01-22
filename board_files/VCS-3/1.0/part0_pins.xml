@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+<!-- ##################################################################### -->
+<!-- ##Sundance File Version:1.0-->
+<!-- ##Sundance Last Modification:2023.09.18-->
+<!-- ##################################################################### -->
+<!-- ## replace part_name with correct FPGA PART from board.xml-->
+<part_info part_name="xczu3eg-ubva530-2L-e">
+ <pins>
+ </pins>
+</part_info>

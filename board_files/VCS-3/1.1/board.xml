@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+<!-- ##################################################################### -->
+<!-- ##Sundance File Version:1.1-->
+<!-- ##Vivado Version:2023.2-->
+<!-- ##Sundance Last Modification:2024.12.02-->
+<!-- ##################################################################### -->
+<!-- ##general board part description-->
+<!-- ##Info: board part name: board_vendor:board_name:part0:file_version  , use all lower case-->
+<board schema_version="2.2" vendor="sundance.com" name="VCS-3" display_name="VCS-3" url="https://store.sundance.com/sbc-vision-system/" preset_file="preset.xml" supports_ced="true">
+   <images>
+      <image name="VCS3_board_v2.jpeg" display_name="VCS-3" sub_type="board" resolution="high">
+         <description>VCS-3 Board File Image</description>
+      </image> 
+   </images>
+ 
+<!-- ##################################################################### -->
+<!-- ##Board PCB Revision -->
+   <compatible_board_revisions>
+      <revision id="1">1.0</revision>
+   </compatible_board_revisions>
+
+<!-- ##################################################################### -->
+<!-- ##Board File Revision -->
+   <file_version>1.1</file_version>  
+ 
+<!-- ##################################################################### -->
+<!-- ##Board descriptions -->
+   <description>VCS-3 development board ....</description>
+ 
+<!--
+  <parameters>
+    <parameter name="heat_sink_type" value="medium" value_type="string"/>
+    <parameter name="heat_sink_temperature" value_type="range" value_min="20.0" value_max="30.0"/>
+  </parameters>
+  <jumpers>
+  </jumpers> -->
+  
+<!-- ##################################################################### -->
+<!-- ##Board components. Special component part0=fpga -->
+<!-- ##set display_name and correct part_name for fpga-->
+<!-- ##add part interfaces and corresponding component here --> 
+   <components>
+   
+      <component name="part0" display_name="VCS-3" type="fpga" part_name="xczu3eg-ubva530-2L-e" pin_map_file="part0_pins.xml" vendor="xilinx.com" spec_url="www.xilinx.com">
+         <description>FPGA part on the board</description>
+         <interfaces>
+
+            <interface mode="master" name="ps8_fixedio" type="xilinx.com:zynq_ultra_ps_e:fixedio_rtl:1.0" of_component="ps8_fixedio" preset_proc="zynq_ultra_ps_e_preset"> 
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="zynq_ultra_ps_e" order="0"/>
+               </preferred_ips>
+            </interface>
+
+
+<!-- ### j1 connector interfaces ### -->	
+		
+            <interface mode="slave" name="j1_mipi_csi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j1_mipi" preset_proc="j1_mipi_csi2_rx_preset">
+            <description>j1 connector used for mipi csi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j1_clk_p" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j1_clk_n" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j1_data_p" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j1_data_n" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>
+
+            <interface mode="master" name="j1_mipi_dsi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j1_mipi" preset_proc="j1_mipi_dsi_tx_preset">
+            <description>j1 connector used for mipi dsi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j1_clk_p" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j1_clk_n" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j1_data_p" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j1_data_n" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>			
+			
+            <interface mode="master" name="j1_reuse_gpio_1v2_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j1_reuse_gpio_1v2">
+            <description>j1 connector reused for gpio 1v2 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j1_reuse_gpio_1v2_0" dir="in" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j1_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j1_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j1_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j1_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j1_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j1_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j1_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j1_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j1_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j1_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j1_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j1_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j1_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j1_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j1_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j1_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j1_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j1_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j1_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j1_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j1_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j1_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j1_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j1_reuse_gpio_3v3_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j1_reuse_gpio_3v3">
+            <description>j1 connector reused for gpio 3v3 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j1_reuse_gpio_3v3_0" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_18"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j1_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j1_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j1_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+<!-- ### j3 connector interfaces ### -->		 
+
+            <interface mode="slave" name="j3_mipi_csi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j3_mipi" preset_proc="j3_mipi_csi2_rx_preset">
+            <description>j3 connector used for mipi csi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j3_clk_p" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j3_clk_n" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j3_data_p" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j3_data_n" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>
+
+            <interface mode="master" name="j3_mipi_dsi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j3_mipi" preset_proc="j3_mipi_dsi_tx_preset"> 
+            <description>j3 connector used for mipi dsi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j3_clk_p" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j3_clk_n" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j3_data_p" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j3_data_n" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>	
+			
+            <interface mode="master" name="j3_reuse_gpio_1v2_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j3_reuse_gpio_1v2">
+            <description>j3 connector reused for gpio 1v2 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j3_reuse_gpio_1v2_0" dir="in" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j3_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j3_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j3_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j3_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j3_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j3_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j3_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j3_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j3_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j3_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j3_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j3_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j3_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j3_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j3_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j3_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j3_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j3_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j3_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j3_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j3_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j3_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j3_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j3_reuse_gpio_3v3_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j3_reuse_gpio_3v3">
+            <description>j3 connector reused for gpio 3v3 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j3_reuse_gpio_3v3_0" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_18"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j3_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j3_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j3_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+<!-- ### j4 connector interfaces ### -->		
+
+            <interface mode="slave" name="j4_mipi_csi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j4_mipi" preset_proc="j4_mipi_csi2_rx_preset">
+            <description>j4 connector used for mipi csi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j4_clk_p" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j4_clk_n" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j4_data_p" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j4_data_n" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>
+
+            <interface mode="master" name="j4_mipi_dsi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j4_mipi" preset_proc="j4_mipi_dsi_tx_preset">
+            <description>j4 connector used for mipi dsi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j4_clk_p" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j4_clk_n" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j4_data_p" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j4_data_n" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>	
+			
+             <interface mode="master" name="j4_reuse_gpio_1v2_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j4_reuse_gpio_1v2">
+            <description>j4 connector reused for gpio 1v2 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j4_reuse_gpio_1v2_0" dir="in" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j4_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j4_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j4_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j4_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j4_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j4_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j4_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j4_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j4_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j4_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j4_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j4_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j4_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j4_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j4_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j4_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j4_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j4_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j4_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j4_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j4_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j4_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j4_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j4_reuse_gpio_3v3_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j4_reuse_gpio_3v3">
+            <description>j4 connector reused for gpio 3v3 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j4_reuse_gpio_3v3_0" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_18"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j4_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j4_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j4_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+<!-- ### j5 connector interfaces ### -->
+			
+            <interface mode="slave" name="j5_mipi_csi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j5_mipi" preset_proc="j5_mipi_csi2_rx_preset">
+            <description>j5 connector used for mipi csi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j5_clk_p" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j5_clk_n" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j5_data_p" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j5_data_n" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>
+
+            <interface mode="master" name="j5_mipi_dsi_if" type="xilinx.com:interface:mipi_phy_rtl:1.0" of_component="j5_mipi" preset_proc="j5_mipi_dsi_tx_preset"> 
+            <description>j5 connector used for mipi dsi interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/> 
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="CLK_P" physical_port="j5_clk_p" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_9"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="CLK_N" physical_port="j5_clk_n" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_8"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_P" physical_port="j5_data_p" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_3"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_6"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_12"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="DATA_N" physical_port="j5_data_n" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_5"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_11"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_14"/> 
+                     </pin_maps>
+                  </port_map>	
+               </port_maps>			   
+            </interface>	
+			
+            <interface mode="master" name="j5_reuse_gpio_1v2_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j5_reuse_gpio_1v2">
+            <description>j5 connector reused for gpio 1v2 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j5_reuse_gpio_1v2_0" dir="in" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j5_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j5_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j5_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j5_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j5_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j5_pin_15"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j5_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j5_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j5_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j5_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j5_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j5_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j5_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j5_reuse_gpio_1v2_0" dir="out" left="9" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_2"/> 
+                        <pin_map port_index="1"   component_pin="j5_pin_3"/> 
+                        <pin_map port_index="2"   component_pin="j5_pin_5"/> 
+                        <pin_map port_index="3"   component_pin="j5_pin_6"/> 
+                        <pin_map port_index="4"   component_pin="j5_pin_8"/> 
+                        <pin_map port_index="5"   component_pin="j5_pin_9"/> 
+                        <pin_map port_index="6"   component_pin="j5_pin_11"/> 
+                        <pin_map port_index="7"   component_pin="j5_pin_12"/> 
+                        <pin_map port_index="8"   component_pin="j5_pin_14"/> 
+                        <pin_map port_index="9"   component_pin="j5_pin_15"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j5_reuse_gpio_3v3_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j5_reuse_gpio_3v3">
+            <description>j5 connector reused for gpio 3v3 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="j5_reuse_gpio_3v3_0" dir="in" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_18"/> 
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="j5_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="j5_reuse_gpio_3v3_0" dir="out" >
+                     <pin_maps>
+                        <pin_map port_index="0"   component_pin="j5_pin_18"/> 
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j8_aux_gpio_if" type="xilinx.com:interface:gpio_rtl:1.0" of_component="j8_aux_gpio">
+            <description>j8 connector gpio 1v2 interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TRI_I" physical_port="aux_gpio_0" dir="in" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0" component_pin="aux_gpio_0"/>
+                        <pin_map port_index="1" component_pin="aux_gpio_1"/>
+                        <pin_map port_index="2" component_pin="aux_gpio_2"/>						
+                        <pin_map port_index="3" component_pin="aux_gpio_3"/>						
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="TRI_O" physical_port="aux_gpio_0" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0" component_pin="aux_gpio_0"/>
+                        <pin_map port_index="1" component_pin="aux_gpio_1"/>
+                        <pin_map port_index="2" component_pin="aux_gpio_2"/>						
+                        <pin_map port_index="3" component_pin="aux_gpio_3"/>								
+                     </pin_maps>
+                  </port_map>				  
+                  <port_map logical_port="TRI_T" physical_port="aux_gpio_0" dir="out" left="3" right="0">
+                     <pin_maps>
+                        <pin_map port_index="0" component_pin="aux_gpio_0"/>
+                        <pin_map port_index="1" component_pin="aux_gpio_1"/>
+                        <pin_map port_index="2" component_pin="aux_gpio_2"/>						
+                        <pin_map port_index="3" component_pin="aux_gpio_3"/>							
+                     </pin_maps>
+                  </port_map>				  
+               </port_maps>
+            </interface>
+
+            <interface mode="master" name="j8_aux_uart2_if" type="xilinx.com:interface:uart_rtl:1.0" of_component="j8_aux_uart2">
+            <description>j8 connector uart interface</description>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_uartlite" order="0"/>
+               </preferred_ips>
+               <port_maps>
+                  <port_map logical_port="TxD" physical_port="aux_uart2_tx" dir="out">
+                     <pin_maps>
+                        <pin_map port_index="0" component_pin="aux_uart2_tx"/>
+                     </pin_maps>
+                  </port_map>
+                  <port_map logical_port="RxD" physical_port="aux_uart2_rx" dir="in">
+                     <pin_maps>
+                        <pin_map port_index="0" component_pin="aux_uart2_rx"/>
+                     </pin_maps>
+                  </port_map>
+               </port_maps>
+            </interface>
+			
+         </interfaces>  
+      </component>
+	  
+  <!--insert interface components here, see ug895 or other board part files-->
+<!--
+      <component name="ps8_fixedio" display_name="PS8 fixed IO" type="chip" sub_type="fixed_io" major_group="">
+      </component>
+-->
+	<component name="j1_mipi" display_name="mipi use on connector j1" type="chip" sub_type="chip" major_group="Mipi Camera or Display">
+	<description>j1 connector used for mipi</description>
+         <component_modes>
+            <component_mode name="mipi_csi" display_name="mipi_csi">
+               <interfaces>
+                  <interface name="j1_mipi_csi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>
+            <component_mode name="mipi_dsi" display_name="mipi_dsi">
+               <interfaces>
+                  <interface name="j1_mipi_dsi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>	
+         </component_modes> 	
+    </component>
+
+	<component name="j1_reuse_gpio_1v2" display_name="gpio 1v2 reuse on connector j1" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j1 connector reused for gpio</description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j1_reuse_gpio_1v2_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+
+	<component name="j1_reuse_gpio_3v3" display_name="gpio 3v3 reuse on connector j1" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j1 connector reused for gpio 3v3 </description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j1_reuse_gpio_3v3_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+
+	<component name="j3_mipi" display_name="mipi use on connector j3" type="chip" sub_type="chip" major_group="Mipi Camera or Display">
+	<description>j3 connector used for mipi</description>
+         <component_modes>
+            <component_mode name="mipi_csi" display_name="mipi_csi">
+               <interfaces>
+                  <interface name="j3_mipi_csi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>
+            <component_mode name="mipi_dsi" display_name="mipi_dsi">
+               <interfaces>
+                  <interface name="j3_mipi_dsi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>	
+         </component_modes> 	
+    </component>
+	
+	<component name="j3_reuse_gpio_1v2" display_name="gpio 1v2 reuse on connector j3" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j3 connector reused for gpio</description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j3_reuse_gpio_1v2_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>	
+
+	<component name="j3_reuse_gpio_3v3" display_name="gpio 3v3 reuse on connector j3" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j3 connector reused for gpio 3v3 </description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j3_reuse_gpio_3v3_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+
+	<component name="j4_mipi" display_name="mipi use on connector j4" type="chip" sub_type="chip" major_group="Mipi Camera or Display">
+	<description>j4 connector used for mipi</description>
+         <component_modes>
+            <component_mode name="mipi_csi" display_name="mipi_csi">
+               <interfaces>
+                  <interface name="j4_mipi_csi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>
+<!--			
+            <component_mode name="mipi_dsi" display_name="mipi_dsi">
+               <interfaces>
+                  <interface name="j4_mipi_dsi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>	
+-->			
+         </component_modes> 	
+    </component>
+	
+	<component name="j4_reuse_gpio_1v2" display_name="gpio 1v2 reuse on connector j4" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j4 connector reused for gpio</description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j4_reuse_gpio_1v2_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+
+	<component name="j4_reuse_gpio_3v3" display_name="gpio 3v3 reuse on connector j4" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j4 connector reused for gpio 3v3 </description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j4_reuse_gpio_3v3_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>	
+
+	<component name="j5_mipi" display_name="mipi use on connector j5" type="chip" sub_type="chip" major_group="Mipi Camera or Display">
+	<description>j5 connector used for mipi</description>
+         <component_modes>
+            <component_mode name="mipi_csi" display_name="mipi_csi">
+               <interfaces>
+                  <interface name="j5_mipi_csi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                <preferred_ip vendor="xilinx.com" library="ip" name="mipi_csi2_rx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>
+<!--			
+            <component_mode name="mipi_dsi" display_name="mipi_dsi">
+               <interfaces>
+                  <interface name="j5_mipi_dsi_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="mipi_dsi_tx_subsystem" order="0"/>
+               </preferred_ips>
+            </component_mode>	
+-->
+         </component_modes> 	
+    </component>
+	
+	<component name="j5_reuse_gpio_1v2" display_name="gpio 1v2 reuse on connector j5" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j5 connector reused for gpio</description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j5_reuse_gpio_1v2_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+	
+	<component name="j5_reuse_gpio_3v3" display_name="gpio 3v3 reuse on connector j5" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+	<description>j5 connector reused for gpio 3v3 </description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j5_reuse_gpio_3v3_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 	
+    </component>
+
+      <component name="j8_aux_gpio" display_name="aux gpio on connector j8" type="chip" sub_type="chip" major_group="General Purpose Input or Output">
+      <description>j8 connector gpio </description>
+         <component_modes>
+            <component_mode name="gpio" display_name="gpio">
+               <interfaces>
+                  <interface name="j8_aux_gpio_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+               </preferred_ips>
+            </component_mode>
+         </component_modes> 
+      </component>
+
+      <component name="j8_aux_uart2" display_name="aux uart2 on connector j8" type="chip" sub_type="chip" major_group="UART">
+         <description>j8 connector uart component</description>
+         <component_modes>
+            <component_mode name="uart" display_name="uart">
+               <interfaces>
+                  <interface name="j8_aux_uart2_if" order="0"/>
+               </interfaces>
+               <preferred_ips>
+                  <preferred_ip vendor="xilinx.com" library="ip" name="axi_uartlite" order="0"/>
+               </preferred_ips>
+            </component_mode>  
+         </component_modes>
+      </component>
+	
+      <component name="ps8_fixedio" display_name="PS8 fixed IO" type="chip" sub_type="fixed_io" major_group=""/>
+ 	  
+   </components>
+ 
+<!-- ##################################################################### -->
+<!-- ##Board jtag chains for partx  -->
+   <jtag_chains>
+      <jtag_chain name="chain1">
+         <position name="0" component="part0"/>
+      </jtag_chain>
+   </jtag_chains>	 
+
+<!-- ##################################################################### -->
+<!-- ##connections between interfaces definition and part0_pins.xml  -->
+<!--
+   <connections>
+      <connection name="part0_j1" component1="part0" component2="j1">
+         <connection_map name="part0_j1" c1_st_index="100" c1_end_index="109" c2_st_index="100" c2_end_index="109"/>
+      </connection>
+
+      <connection name="part0_j3" component1="part0" component2="j3">
+         <connection_map name="part0_j3" c1_st_index="120" c1_end_index="129" c2_st_index="120" c2_end_index="129"/>
+      </connection>
+
+      <connection name="part0_j4" component1="part0" component2="j4">
+         <connection_map name="part0_j4" c1_st_index="140" c1_end_index="149" c2_st_index="140" c2_end_index="149"/>
+      </connection>
+
+      <connection name="part0_j5" component1="part0" component2="j5">
+         <connection_map name="part0_j5" c1_st_index="160" c1_end_index="169" c2_st_index="160" c2_end_index="169"/>
+      </connection>	  
+   </connections>
+-->
+
+<!-- ##################################################################### -->
+<!-- ##Additional IO interface rules-->  
+<!-- <ip_associated_rules>
+  <ip_associated_rule name="default">
+   <ip vendor="xilinx.com" library="ip" name="ddr4" version="*" ip_interface="C0_SYS_CLK">
+    <associated_board_interfaces>
+	  <associated_board_interface name="user_si570_sysclk" order="0"/> 
+    </associated_board_interfaces>
+   </ip>
+  </ip_associated_rule>
+ </ip_associated_rules> -->
+
+<!-- ##################################################################### -->
+</board> 
+
+
